@@ -10,6 +10,7 @@ import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -19,6 +20,8 @@ import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.data.Contract;
 
 import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -35,6 +38,8 @@ public class StockQuoteDetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_STOCK = "extra_stock_name";
 
+    private final DecimalFormat dollarFormat = (DecimalFormat) NumberFormat.getCurrencyInstance(Locale.US);;
+
     @BindView(R.id.chart)LineChart chart;
     private String mStockName;
 
@@ -43,7 +48,6 @@ public class StockQuoteDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock_quote_detail);
         ButterKnife.bind(this);
-
         mStockName = getIntent().getStringExtra(EXTRA_STOCK);
 
         Cursor cursor = getContentResolver().query(Contract.Quote.makeUriForStock(mStockName), null, null, null, null);
@@ -98,6 +102,14 @@ public class StockQuoteDetailActivity extends AppCompatActivity {
                 int style = DateFormat.SHORT;
                 DateFormat df = DateFormat.getDateInstance(style, Locale.getDefault());
                 return df.format(calendar.getTime());
+            }
+        });
+
+        YAxis axisLeft = chart.getAxisLeft();
+        axisLeft.setValueFormatter(new IAxisValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                return dollarFormat.format(value);
             }
         });
 

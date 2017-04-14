@@ -6,12 +6,10 @@ import android.content.ComponentName;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Handler;
 import android.os.Looper;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.udacity.stockhawk.R;
@@ -76,11 +74,10 @@ public final class QuoteSyncJob {
 
             while (iterator.hasNext()) {
                 final String symbol = iterator.next();
-
                 Stock stock = quotes.get(symbol);
-                StockQuote quote = stock.getQuote();
+                StockQuote quote = stock != null ? stock.getQuote() : null;
 
-                if(quote.getPrice() == null){
+                if(quote == null || quote.getPrice() == null){
                     Handler handler = new Handler(Looper.getMainLooper());
 
                     handler.post(new Runnable() {
