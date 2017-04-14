@@ -34,5 +34,9 @@
     <string name="toast_no_connectivity">Will refresh when network available.</string>
 
     <string name="content_description_add_fab_button">Add Stock</string>
+    <string name="error_stock_quote_not_exist">Symbol %s not found or do not exist</string>
+
+    <!-- Strings related to Widgets -->
+    <string name="title_widget_today">StockHawk Today</string>
 
 </resources>
