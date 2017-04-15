@@ -34,7 +34,11 @@
             android:authorities="com.udacity.stockhawk"
             android:exported="false" />
 
-        <service android:name=".widget.StockWidgetIntentService" />
+        <service
+            android:name=".widget.StockWidgetRemoteViewsService"
+            android:enabled="@bool/widget_detail_enabled"
+            android:exported="false"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
         <service
             android:name=".sync.QuoteJobService"
             android:enabled="true"
