@@ -4,7 +4,9 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -49,6 +51,9 @@ public class StockQuoteDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_stock_quote_detail);
         ButterKnife.bind(this);
         mStockName = getIntent().getStringExtra(EXTRA_STOCK);
+
+        ActionBar supportActionBar = getSupportActionBar();
+        supportActionBar.setDisplayHomeAsUpEnabled(true);
 
         Cursor cursor = getContentResolver().query(Contract.Quote.makeUriForStock(mStockName), null, null, null, null);
         cursor.moveToNext();
@@ -125,5 +130,14 @@ public class StockQuoteDetailActivity extends AppCompatActivity {
 
         chart.invalidate();
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
