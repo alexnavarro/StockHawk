@@ -1,24 +1,37 @@
 # Stock Hawk
+> Stock Hawk is an Android application that displays current stock prices and price changes.
 
-This forked from [udacity](https://github.com/udacity/StockHawk) repo is the starter code for project 3 in Udacity's [Android Developer Nanodegree](https://www.udacity.com/course/android-developer-nanodegree-by-google--nd801). 
+This application is part of the Udacity Android Developer Nanodegree. The target of this project is taking it from a functional state to a production-ready app. The main screen list stock prices, which can me added new stocks using a fab button. A user can see detailed chart, taping in one stock. Another useful feature is a widget for displaying the stocks.
 
-Check out Udacity's [Advanced Android App Development](https://www.udacity.com/course/advanced-android-app-development--ud855) course to get the skills you'll need to complete this project!
-
-If you're a Nanodegree student check your work againt the project [rubric](https://review.udacity.com/#!/rubrics/140/view), then click [here](https://classroom.udacity.com/nanodegrees/nd801/parts/8011345406/project) to submit your project.
+For syncronzing data the Android Content Provider pattern was used. The main libs used are:
+* [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart) for generating the charts
+* [okhttp](https://github.com/square/okhttp) as http/https client
 
 ## Install
+I recommend you use [Android Studio](https://developer.android.com/studio/index.html) because the development is easier thant command line.
 
-I recommend you use [Android Studio](https://developer.android.com/studio/index.html) because the development is easier thant command line. It necessary create a directory named keys in the root and put your debug and prodcution keystore.
+For generate the apk using command line use this command: `./gradlew assembleDebug`
 
 ## Screenshot
 <img src="/screenshots/device-2017-12-10-133441.png" width="280" height="500">
 
 For generate the apk using command line use this command: `./gradlew assembleDebug`
 
-# Contrubuting
+## Meta
+Alexandre Navarro – [@navarro_alex](https://twitter.com/navarro_alex) – alexandrenavarro@gmail.com
 
-Pull requests gratefully accepted.
+Distributed under the MIT license. See [LICENSE](LICENSE) for more information.
 
-## License
+[https://github.com/alexnavarro](https://github.com/alexnavarro)
 
-[Scheduling](https://github.com/alexnavarro/StockHawk) is free software, and may be redistributed under the terms specified in the [LICENSE](LICENSE) file.
+1. Fork it (<https://github.com/alexnavarro/StockHawk#fork-destination-box>)
+2. Create your feature branch (`git checkout -b feature/fooBar`)
+3. Commit your changes (`git commit -am 'Add some fooBar'`)
+4. Push to the branch (`git push origin feature/fooBar`)
+5. Create a new Pull Request
+
+Some other ways you can contribute:
+* by suggesting new features
+* by writing specifications
+* by writing code ( **no patch is too small** : fix typos, add comments, clean up inconsistent whitespace)
+* by refactoring code
